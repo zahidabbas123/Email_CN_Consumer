@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/org/datacontract/schemas/_2004/_07/CrystalMapper/Entity.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/CrystalMapper_Generic/EntityOfClientStagingDataLoadhYwAl1Wy.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_Model/ClientStagingDataLoad.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/DataSyncRequest.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/DataSyncResponse.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/DeliveryStatusRequest.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/DeliveryStatusResponse.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/MessageDeliveryStatus.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/OutboundMessage.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/OutboundMessageResponse.java=UTF-8
+encoding//src/org/datacontract/schemas/_2004/_07/TextIt_WebServices/TokenRequest.java=UTF-8
+encoding//src/org/tempuri/ISendReceiveServiceSOAP.java=UTF-8
+encoding//src/org/tempuri/SendReceiveServiceSOAP.java=UTF-8
+encoding//src/org/tempuri/SendReceiveServiceSOAPLocator.java=UTF-8
+encoding//src/org/tempuri/SendReceiveServiceSOAPStub.java=UTF-8

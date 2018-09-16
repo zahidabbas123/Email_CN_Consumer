@@ -1,0 +1,15 @@
+[PropertyInfo]
+DB_ID,String,false,false, , ,true,<default>
+DB_Login,String,false,false, , ,true,<default>
+DB_Passwd,String,false,false, , ,true,<default>
+DB_URL,String,false,false, , ,true,<default>
+env,com.soft.email.core.Enviornment,false,false, , ,false,<default>
+envConfig,java.util.Properties,false,false, , ,false,<default>
+logInitialized,boolean,false,false, , ,false,<default>
+logLevel,org.apache.log4j.Level,false,false, , ,true,<default>
+EMAIL_SERVER,String,false,false, , ,false, 
+[IconNames]
+
+
+
+

@@ -1,0 +1,232 @@
+package com.soft.email;
+
+import com.soft.email.beans.AlertEmails;
+import com.soft.email.beans.Email;
+import com.soft.email.beans.EmailType;
+import com.soft.email.core.Enviornment;
+import com.soft.email.core.exceptions.ObjectNotFoundException;
+import com.soft.email.db.EmailDBManager;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import org.apache.log4j.Logger;
+
+public class AlertManagerThread
+  extends Thread
+{
+  private static final Logger log = Logger.getLogger(AlertManagerThread.class);
+  EmailSenderInterface emailSender;
+  String whereClause;
+  Enviornment env;
+  String threadID;
+  private static long ROUNDS;
+  private static long ROUND_INTERVAL;
+  
+  public AlertManagerThread(String threadID, EmailSenderInterface emailSender, long ROUNDS, long ROUND_INTERVAL, String whereClause, Enviornment env)
+  {
+    this.emailSender = emailSender;
+    this.whereClause = whereClause;
+    this.env = env;
+    this.threadID = threadID;
+    ROUNDS = ROUNDS;
+    ROUND_INTERVAL = ROUND_INTERVAL;
+  }
+  
+  public void run()
+  {
+    boolean keepRunning = false;
+    long roundsCompleted = 0L;
+    if ((ROUNDS == 0L) || ((ROUNDS > 0L) && (ROUNDS > roundsCompleted))) {
+      keepRunning = true;
+    }
+    while (keepRunning)
+    {
+      EmailDBManager sdb = null;
+      try
+      {
+        sdb = EmailDBManager.getDBManager(this.env);
+        boolean mailExist = false;
+        
+        GregorianCalendar calendarDate = new GregorianCalendar();
+        
+        String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
+        
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
+        
+        ArrayList partnerlist = sdb.getAlertEmails("CARRIER-BAL");
+        if (partnerlist.size() > 0) {
+          for (int i = 0; i < partnerlist.size(); i++)
+          {
+            mailExist = true;
+            AlertEmails alert = (AlertEmails)partnerlist.get(i);
+            if (alert.getAlertCode().equals("CARRIER-BAL"))
+            {
+              String Message = sdb.getPartnerBalanceEmails(0);
+              log.debug("Message=" + Message);
+              
+              EmailType emt = sdb.getEmailType(alert.getEmailTypeID());
+              Email email = new Email(0, emt.getTypeID(), 0, emt.getFromAddress(), emt.getToList(), emt.getCCList(), emt.getBCCList(), emt.getSubject() + sdf.format(cal.getTime()), Message, 0, 0L, "", "");
+              try
+              {
+                boolean emailsent = this.emailSender.sendEmail(this.threadID, email);
+                if (emailsent) {
+                  log.debug("Mail Sent");
+                } else {
+                  log.debug("Fail to Sent mail");
+                }
+              }
+              catch (Exception ex2)
+              {
+                log.error(ex2);
+              }
+            }
+          }
+        }
+        ArrayList closelist = sdb.getAlertEmails("SERVICE-STCLOSE");
+        if (closelist.size() > 0) {
+          for (int i = 0; i < closelist.size(); i++)
+          {
+            mailExist = true;
+            AlertEmails alert = (AlertEmails)closelist.get(i);
+            if (alert.getAlertCode().equals("SERVICE-STCLOSE"))
+            {
+              String Message = sdb.addCloseServiceAlert();
+              
+              EmailType emt = sdb.getEmailType(alert.getEmailTypeID());
+              Email email = new Email(0, emt.getTypeID(), 0, emt.getFromAddress(), emt.getToList(), emt.getCCList(), emt.getBCCList(), emt.getSubject(), Message, 0, 0L, "", "");
+              try
+              {
+                boolean emailsent = this.emailSender.sendEmail(this.threadID, email);
+                if (emailsent) {
+                  log.debug("Mail Sent");
+                } else {
+                  log.debug("Fail to Sent mail");
+                }
+              }
+              catch (Exception ex2)
+              {
+                log.error(ex2);
+              }
+            }
+          }
+        }
+        ArrayList closeDSLlist = sdb.getAlertEmails("SERVICE-STCLOSEDSL");
+        if (closeDSLlist.size() > 0) {
+          for (int i = 0; i < closeDSLlist.size(); i++)
+          {
+            mailExist = true;
+            AlertEmails alert = (AlertEmails)closeDSLlist.get(i);
+            if (alert.getAlertCode().equals("SERVICE-STCLOSEDSL"))
+            {
+              String Message = sdb.addCloseDSLServiceAlert();
+              
+              EmailType emt = sdb.getEmailType(alert.getEmailTypeID());
+              Email email = new Email(0, emt.getTypeID(), 0, emt.getFromAddress(), emt.getToList(), emt.getCCList(), emt.getBCCList(), emt.getSubject(), Message, 0, 0L, "", "");
+              try
+              {
+                if ((!Message.equals("Failure")) && (Message.length() > 100))
+                {
+                  boolean emailsent = this.emailSender.sendEmail(this.threadID, email);
+                  if (emailsent) {
+                    log.debug("Mail Sent");
+                  } else {
+                    log.debug("Fail to Sent mail");
+                  }
+                }
+              }
+              catch (Exception ex2)
+              {
+                log.error(ex2);
+              }
+            }
+          }
+        }
+        ArrayList list = sdb.getNextBillEmails(6);
+        
+        String Message = sdb.getReminderEmails(1);
+        Message = sdb.getReminderEmails(5);
+        Message = sdb.getReminderEmails(15);
+        Message = sdb.getReminderEmails(25);
+      }
+      catch (ObjectNotFoundException ex2)
+      {
+        log.error(ex2);
+        if (sdb != null) {
+          try
+          {
+            sdb.disconnectDatabase();
+          }
+          catch (SQLException ex1)
+          {
+            log.error(ex1);
+          }
+        }
+      }
+      catch (ClassNotFoundException ex)
+      {
+        log.error(ex);
+        if (sdb != null) {
+          try
+          {
+            sdb.disconnectDatabase();
+          }
+          catch (SQLException ex1)
+          {
+            log.error(ex1);
+          }
+        }
+      }
+      catch (SQLException ex)
+      {
+        log.error(ex);
+        if (sdb != null) {
+          try
+          {
+            sdb.disconnectDatabase();
+          }
+          catch (SQLException ex1)
+          {
+            log.error(ex1);
+          }
+        }
+      }
+      finally
+      {
+        if (sdb != null) {
+          try
+          {
+            sdb.disconnectDatabase();
+          }
+          catch (SQLException ex1)
+          {
+            log.error(ex1);
+          }
+        }
+      }
+      if (ROUNDS > 0L) {
+        roundsCompleted += 1L;
+      } else {
+        roundsCompleted = 0L;
+      }
+      if ((ROUNDS == 0L) || ((ROUNDS > 0L) && (ROUNDS > roundsCompleted)))
+      {
+        keepRunning = true;
+        try
+        {
+          Thread.sleep(ROUND_INTERVAL * 1000L * 60L);
+        }
+        catch (InterruptedException ex3)
+        {
+          log.error(ex3);
+        }
+      }
+      else
+      {
+        keepRunning = false;
+      }
+    }
+  }
+}

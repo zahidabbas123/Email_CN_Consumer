@@ -1,0 +1,12 @@
+[PropertyInfo]
+emailID,String,false,false, , ,false, 
+toList,String,false,false, , ,false, 
+CCList,String,false,false, , ,false, 
+BCCList,String,false,false, , ,false, 
+subject,String,false,false, , ,false, 
+message,String,false,false, , ,false, 
+[IconNames]
+
+
+
+

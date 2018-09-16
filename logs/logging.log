@@ -1,0 +1,462 @@
+2014-11-25 17:39:36,733 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:39:41,783 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:39:46,237 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 17:39:46,353 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 17:39:46,355 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 17:39:46,357 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 17:39:46,362 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:46,368 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:46,369 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:46,401 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:46,403 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20
+2014-11-25 17:39:46,403 INFO [Thread-0] EmailDBManager - Recip: 03025558335
+2014-11-25 17:39:46,403 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:46,403 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:46,404 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:46,604 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:48,038 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 17:39:48,041 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:48,042 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 17:39:48,042 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-3 and ai_generationdate>sysdate-4 
+2014-11-25 17:39:48,050 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-5 and ai_generationdate>sysdate-6 
+2014-11-25 17:39:48,067 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:48,071 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:48,074 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:48,079 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:48,081 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:39:48,081 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:48,082 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:48,082 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:48,083 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:48,083 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:48,258 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:48,259 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:48,260 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:39:48,260 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:48,263 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:48,266 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:48,308 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:48,309 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:39:48,309 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:48,309 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:48,310 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:48,310 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:48,311 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:48,515 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:48,516 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:48,517 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:39:48,517 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:48,520 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:48,523 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:48,528 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:48,529 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 17:39:48,529 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:48,529 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:48,531 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:48,531 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:48,531 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:48,675 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:48,676 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:48,676 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:39:48,677 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:48,679 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:48,682 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:48,687 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:48,688 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:39:48,688 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:48,689 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:48,689 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:48,690 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:48,690 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:48,815 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:48,816 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:48,816 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:39:48,816 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:48,819 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:48,822 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:48,834 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:48,835 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:39:48,835 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:48,836 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:48,836 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:48,836 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:48,837 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:49,041 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:49,042 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:49,042 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:39:49,043 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:39:49,045 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:39:49,048 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =2 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:39:49,065 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:39:49,066 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 17:39:49,067 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:39:49,067 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:39:49,067 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:39:49,068 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:39:49,069 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:39:49,171 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:39:49,172 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:39:49,172 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:40:52,440 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:40:52,574 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 17:40:52,577 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 17:40:52,583 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 17:40:52,637 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:00,510 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:00,511 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:00,512 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 525
+2014-11-25 17:41:00,519 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 2 --------------------------
+2014-11-25 17:41:00,519 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:08,561 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:08,562 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:08,562 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 526
+2014-11-25 17:41:08,566 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 3 --------------------------
+2014-11-25 17:41:08,566 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:16,465 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:16,466 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:16,466 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 527
+2014-11-25 17:41:16,476 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 4 --------------------------
+2014-11-25 17:41:16,477 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:27,548 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:27,549 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:27,549 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 528
+2014-11-25 17:41:27,556 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 5 --------------------------
+2014-11-25 17:41:27,556 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:35,421 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:35,422 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:35,422 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 529
+2014-11-25 17:41:35,427 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 6 --------------------------
+2014-11-25 17:41:35,427 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:44,004 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:44,005 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:44,005 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 530
+2014-11-25 17:41:44,014 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 7 --------------------------
+2014-11-25 17:41:44,015 INFO [Thread-0] EmailSender - ContentType=text/plain
+2014-11-25 17:41:51,824 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:41:51,825 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:41:51,825 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 531
+2014-11-25 17:52:01,523 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:52:05,611 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 17:52:05,725 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 17:52:05,727 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 17:52:05,728 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 17:52:05,733 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:52:05,739 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:52:05,742 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:52:05,770 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:52:05,772 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20
+2014-11-25 17:52:05,772 INFO [Thread-0] EmailDBManager - Recip: 03025558335
+2014-11-25 17:52:05,772 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:52:05,772 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:52:05,773 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:52:06,004 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:52:10,317 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 17:52:10,320 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:52:10,320 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 17:52:19,684 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:52:19,813 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 17:52:19,816 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 17:52:19,822 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 17:52:19,874 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 17:52:28,440 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:52:28,440 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:52:28,441 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 532
+2014-11-25 17:55:02,991 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:55:07,950 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 17:55:08,067 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 17:55:08,069 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 17:55:08,070 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 17:55:08,075 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:55:08,080 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:55:08,082 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:55:08,097 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:55:08,099 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20
+2014-11-25 17:55:08,099 INFO [Thread-0] EmailDBManager - Recip: 03025558335
+2014-11-25 17:55:08,099 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:55:08,099 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:55:08,100 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:55:08,288 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:55:10,819 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 17:55:10,823 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:55:10,823 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 17:55:16,138 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:55:16,267 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 17:55:16,270 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 17:55:16,276 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 17:55:16,330 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 17:55:24,202 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:55:24,203 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:55:24,203 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 533
+2014-11-25 17:59:13,672 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 17:59:13,792 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 17:59:13,794 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 17:59:13,795 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 17:59:13,800 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:13,806 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:13,808 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:13,869 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:13,871 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20
+2014-11-25 17:59:13,871 INFO [Thread-0] EmailDBManager - Recip: 03025558335
+2014-11-25 17:59:13,871 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:13,871 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:13,873 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:14,061 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:17,827 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 17:59:17,830 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:17,831 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 17:59:17,831 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-3 and ai_generationdate>sysdate-4 
+2014-11-25 17:59:17,834 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-5 and ai_generationdate>sysdate-6 
+2014-11-25 17:59:17,839 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:17,841 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:17,844 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:17,865 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:17,866 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:59:17,866 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:59:17,867 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:17,867 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:17,868 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:17,868 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:20,153 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:59:20,154 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:20,154 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:59:20,155 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:20,157 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:20,159 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:20,170 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:20,170 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 17:59:20,171 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:59:20,171 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:20,171 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:20,171 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:20,172 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:21,391 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:59:21,392 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:21,392 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:59:21,393 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:21,394 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:21,396 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:21,432 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:21,433 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:59:21,433 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:59:21,433 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:21,433 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:21,434 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:21,434 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:21,544 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:59:21,545 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:21,546 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:59:21,546 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:21,549 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:21,553 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:21,558 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:21,559 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 17:59:21,560 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:59:21,560 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:21,561 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:21,561 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:21,562 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:21,668 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:59:21,669 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:21,669 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:59:21,670 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 17:59:21,671 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 17:59:21,673 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 17:59:21,713 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 17:59:21,714 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 17:59:21,714 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 17:59:21,715 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 17:59:21,715 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 17:59:21,720 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 17:59:21,721 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 17:59:21,839 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 17:59:21,841 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 17:59:21,841 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 17:59:39,872 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 17:59:40,030 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 17:59:40,033 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 17:59:40,038 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 17:59:40,091 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 17:59:48,321 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:59:48,322 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:59:48,322 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 534
+2014-11-25 17:59:48,327 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 2 --------------------------
+2014-11-25 17:59:48,328 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 17:59:56,321 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 17:59:56,322 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 17:59:56,322 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 535
+2014-11-25 17:59:56,326 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 3 --------------------------
+2014-11-25 17:59:56,327 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:00:04,109 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:00:04,109 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:00:04,110 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 536
+2014-11-25 18:00:04,150 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 4 --------------------------
+2014-11-25 18:00:04,151 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:00:12,193 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:00:12,193 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:00:12,193 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 537
+2014-11-25 18:00:12,211 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 5 --------------------------
+2014-11-25 18:00:12,212 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:00:20,328 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:00:20,328 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:00:20,329 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 538
+2014-11-25 18:00:20,335 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 6 --------------------------
+2014-11-25 18:00:20,335 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:00:29,353 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:00:29,353 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:00:29,353 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 539
+2014-11-25 18:03:04,582 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 18:03:04,695 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 18:03:04,697 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 18:03:04,698 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 18:03:04,703 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:03:04,709 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:03:04,711 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:03:04,729 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:03:04,730 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20
+2014-11-25 18:03:04,731 INFO [Thread-0] EmailDBManager - Recip: 03025558335
+2014-11-25 18:03:04,731 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 18:03:04,731 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:03:04,732 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 18:03:04,917 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 18:03:05,472 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 18:03:05,474 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 18:03:05,474 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 18:03:05,475 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-3 and ai_generationdate>sysdate-4 
+2014-11-25 18:03:05,479 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-5 and ai_generationdate>sysdate-6 
+2014-11-25 18:03:05,483 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:03:05,484 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:03:05,487 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:03:05,494 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:03:05,495 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 18:03:05,495 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 18:03:05,496 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 18:03:05,496 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:03:05,497 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 18:03:05,497 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 18:03:05,620 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:03:05,622 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 18:03:05,622 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:03:05,622 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:03:05,625 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:03:05,628 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:03:05,633 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:03:05,634 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 18:03:05,634 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 18:03:05,634 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 18:03:05,635 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:03:05,635 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 18:03:05,636 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 18:03:05,753 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:03:05,754 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 18:03:05,754 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:03:05,755 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:03:05,757 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:03:05,759 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:03:05,762 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:03:05,763 INFO [Thread-0] EmailDBManager - SMSText: Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20
+2014-11-25 18:03:05,763 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 18:03:05,763 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 18:03:05,764 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other1%2CYour%20invoice%20Amount%20PKR%20184.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:03:05,764 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 18:03:05,764 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 18:03:05,887 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:03:05,904 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 18:03:05,905 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:03:05,905 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:03:05,908 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:03:05,910 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:03:05,948 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:03:05,949 INFO [Thread-0] EmailDBManager - SMSText: Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20
+2014-11-25 18:03:05,949 INFO [Thread-0] EmailDBManager - Recip: 00
+2014-11-25 18:03:05,949 INFO [Thread-0] EmailDBManager - before request url
+2014-11-25 18:03:05,950 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:03:05,950 INFO [Thread-0] EmailDBManager - before HttpURLConnection
+2014-11-25 18:03:05,951 INFO [Thread-0] EmailDBManager - after HttpURLConnection
+2014-11-25 18:03:06,067 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:03:06,068 INFO [Thread-0] EmailDBManager - after disconnect
+2014-11-25 18:03:06,068 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:03:18,354 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 18:03:18,475 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 18:03:18,477 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 18:03:18,483 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 18:03:18,534 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:03:26,598 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:03:26,599 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:03:26,599 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 540
+2014-11-25 18:03:26,606 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 2 --------------------------
+2014-11-25 18:03:26,607 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:03:34,481 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:03:34,482 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:03:34,482 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 541
+2014-11-25 18:03:34,487 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 3 --------------------------
+2014-11-25 18:03:34,487 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:03:42,343 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:03:42,344 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:03:42,344 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 542
+2014-11-25 18:03:42,380 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 4 --------------------------
+2014-11-25 18:03:42,380 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:03:50,333 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:03:50,333 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:03:50,334 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 543
+2014-11-25 18:03:50,338 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 5 --------------------------
+2014-11-25 18:03:50,339 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:03:58,124 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:03:58,124 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:03:58,124 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 544
+2014-11-25 18:06:27,765 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%CARRIER-BAL%'
+2014-11-25 18:06:27,887 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSE%'
+2014-11-25 18:06:27,889 DEBUG [Thread-0] EmailDBManager -  select EA.EMT_TYPEID,EA_ALERTID,EA_ALERTCODE,EMT_DAYSBEFORE,EMT_DAYSAFTER   FROM TEM_TBLEMAILALERTS EA,TEM_TBLEMAILTYPES ET   where EA.EMT_TYPEID=ET.EMT_TYPEID and EA.EA_ISDISABLED=0 and EMT_ISDISABLED=0    and EA_ALERTCODE like '%SERVICE-STCLOSEDSL%'
+2014-11-25 18:06:27,890 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-1 and ai_generationdate>sysdate-2 
+2014-11-25 18:06:27,895 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:06:27,901 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:06:27,903 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:06:27,923 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:06:27,925 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/03025558335/Dear%20Test%20Attachment%2CYour%20invoice%20Amount%20PKR%20966.0%20is%20generated%20on%20Dated%2024-Nov-2014%20Due%20Date%20is%2029-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:06:29,165 INFO [Thread-0] EmailDBManager - Response :: OK
+2014-11-25 18:06:29,168 INFO [Thread-0] EmailDBManager - SMS Sent : true
+2014-11-25 18:06:29,168 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-3 and ai_generationdate>sysdate-4 
+2014-11-25 18:06:29,171 DEBUG [Thread-0] EmailDBManager -  select to_char(ai_generationdate,'dd-Mon-yyyy') as ai_generationdate ,ai_invoiceamnt  , ai_invoicecustrefno,to_char(ai_duedate,'dd-Mon-yyyy')  as ai_duedate ,trunc(sysdate-ai_duedate) as noofdays, acct.ac_accountno,AC_ACCTHOLDERNAME,AC_STORMCELLNUMBER,AC_EMAIL,AC_CURRENTBALANCE  from pm_tblacctinvoices ai,sm_tblaccounts acct  where AI_ISCUSTOMERINV=0  and ai_invoiceid in (select ai_invoiceid from pm_tblacctsubinvoices where AS_ADJUSTABLEAMOUNT >0)  and acct.ac_accountno=ai.ac_accountno and ai_generationdate<sysdate-5 and ai_generationdate>sysdate-6 
+2014-11-25 18:06:29,175 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:06:29,178 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:06:29,180 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:06:29,196 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:06:29,197 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20Test%20Other2%2CYour%20invoice%20Amount%20PKR%201648.0%20is%20generated%20on%20Dated%2019-Nov-2014%20Due%20Date%20is%2024-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:06:29,316 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:06:29,318 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:06:29,318 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:06:29,320 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:06:29,323 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:06:29,327 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:06:29,328 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other1%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:06:29,455 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:06:29,457 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:06:29,457 DEBUG [Thread-0] EmailDBManager -  SELECT  EA_ALERTID, EMT_TYPEID, EA_ALERTCODE,  EA_ALERTNAME,EA_ALERTDESC,  EA_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILALERTS  Where EA_ISDISABLED=0 and lower(EA_ALERTCODE) ='invoice-reminder' 
+2014-11-25 18:06:29,460 DEBUG [Thread-0] EmailDBManager -  SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES  Where EMT_TYPEID =43 order by EMT_TYPENAME 
+2014-11-25 18:06:29,462 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES  Where ECT_CONTENTTYPEID =1 order by ECT_CONTENTTYPEDESC 
+2014-11-25 18:06:29,466 DEBUG [Thread-0] EmailDBManager - Email Message :Email Request is generated
+2014-11-25 18:06:29,466 INFO [Thread-0] EmailDBManager - requestUrl : https://text.com.pk/_SRService/SendReceiveService.svc/SendMessageToIndividual/00/Dear%20DHA%20and%20Other%2CYour%20invoice%20Amount%20PKR%201518.0%20is%20generated%20on%20Dated%2020-Nov-2014%20Due%20Date%20is%2025-Nov-2014%20/215/875/0/textcybernet@yahoo.com/text2013
+2014-11-25 18:06:29,575 INFO [Thread-0] EmailDBManager - Response :: Bad Request
+2014-11-25 18:06:29,576 INFO [Thread-0] EmailDBManager - SMS Sent : false
+2014-11-25 18:06:41,554 DEBUG [Thread-0] EmailDBManager -  SELECT  EM_EMAILID, EMT_TYPEID, EM_PRIORITY, EM_FROM, EM_TOLIST, EM_CCLIST, EM_BCCLIST, EM_SUBJECT, EM_MESSAGE, EMS_STATUSID, SU_SysUserID, SU_SysUserIP, SU_InsertDate from TEM_TBLEMAILS   Where 1=1  and EMS_STATUSID in (0, 1, 3)  order by EMS_STATUSID, EM_EMAILID
+2014-11-25 18:06:41,670 DEBUG [Thread-0] EmailDBManager -  SELECT  ECT_CONTENTTYPEID, ECT_CONTENTTYPEDESC, ECT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILCONTENTTYPES order by ECT_CONTENTTYPEID 
+2014-11-25 18:06:41,673 DEBUG [Thread-0] EmailDBManager - SELECT  EMT_TYPEID, EMT_TYPENAME, ECT_CONTENTTYPEID,EMT_PRIORITY,EMT_STYLESHEET,EMT_SUBJECT,EMT_FROMADDRESS,EMT_TOLIST,EMT_CCLIST,EMT_BCCLIST,EMT_ISDISABLED, SU_SysUserID, SU_SysUserIP, SU_InsertDate, SU_SysUserIDM, SU_SysUserIPM, SU_ModifyDate  from TEM_TBLEMAILTYPES order by EMT_TYPEID
+2014-11-25 18:06:41,678 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 1 --------------------------
+2014-11-25 18:06:41,729 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:06:49,803 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:06:49,803 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:06:49,804 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 545
+2014-11-25 18:06:49,831 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 2 --------------------------
+2014-11-25 18:06:49,832 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:06:57,845 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:06:57,845 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:06:57,846 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 546
+2014-11-25 18:06:57,856 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 3 --------------------------
+2014-11-25 18:06:57,856 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:07:05,555 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:07:05,555 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:07:05,555 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 547
+2014-11-25 18:07:05,561 DEBUG [Thread-0] EmailManagerThread - ------------------------------Email: 4 --------------------------
+2014-11-25 18:07:05,561 INFO [Thread-0] EmailSender - ContentType=text/html
+2014-11-25 18:07:13,303 INFO [Thread-0] EmailSender - Email Sent Successfully, requested by myThread.
+2014-11-25 18:07:13,304 DEBUG [Thread-0] EmailDBManager - 
+2014-11-25 18:07:13,304 DEBUG [Thread-0] EmailDBManager -  Update TEM_TBLEMAILS Set EMS_STATUSID=2  Where EM_EMAILID = 548

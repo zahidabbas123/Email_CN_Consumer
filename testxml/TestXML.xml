@@ -1,0 +1,7 @@
+<?xml version=\"1.0\"?>
+<acctcredit><account><name>testAccount</name>
+</account><body>
+<accountno>23</accountno>
+<creditlimit>40</creditlimit><currbalance>40</currbalance>
+<previouscreditlimit>20</previouscreditlimit></body><endbody/>
+<fromuser/></acctcredit>";

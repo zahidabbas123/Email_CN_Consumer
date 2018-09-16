@@ -1,0 +1,1 @@
+<?xml version="1.0"?><parnotification><icpartner><name>MICRO TRONS</name></icpartner><body><partnerid>121</partnerid><currentbalance>-11586.2357</currentbalance><creditlimit>0</creditlimit><usedlimit>20716.3375</usedlimit><creditbalance>0</creditbalance><status>BLOCKED</status><partype>PREPAID</partype></body><endbody/><fromuser/></parnotification>
